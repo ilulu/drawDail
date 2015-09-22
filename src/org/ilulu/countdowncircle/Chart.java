@@ -48,6 +48,10 @@ public class Chart extends Drawable {
         return mOnlineNum;
     }
 
+    public void setProgressColor(int mProgressColor) {
+        this.mProgressColor = mProgressColor;
+    }
+
     public void setOnlineNum(float mOnlineNum) {
         this.mOnlineNum = mOnlineNum;
         invalidateSelf();
@@ -128,8 +132,11 @@ public class Chart extends Drawable {
      * @param paint
      */
     private void drawProgress(Canvas canvas,Paint paint){
-
-        paint.setColor(Color.rgb(30, 216, 55));
+        if(mProgressColor!=0){
+            paint.setColor(mProgressColor);
+        }else {
+            paint.setColor(Color.rgb(30, 216, 55));
+        }
         RectF oval=new RectF();
         oval.left= mLeft;
         oval.right= mRight;

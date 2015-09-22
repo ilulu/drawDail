@@ -36,6 +36,13 @@ public class NumberChart extends LinearLayout {
     ImageView imageView;
     float mTotalNum;
     float mOnlineNum;
+    int mProgressColor=0;
+
+    public void setProgressColor(int mProgressColor) {
+        this.mProgressColor = mProgressColor;
+        chart.setProgressColor(this.mProgressColor);
+    }
+
     public NumberChart(Context context) {
         super(context);
         init();
