@@ -34,6 +34,7 @@ import org.ilulu.countdowncircle.Chart;
 public class NumberChart extends LinearLayout {
     Chart chart;
     ImageView imageView;
+    float oldNum=0f;
     float mTotalNum;
     float mOnlineNum;
     int mProgressColor=0;
@@ -66,7 +67,7 @@ public class NumberChart extends LinearLayout {
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     private void setChartValue(){
-        ObjectAnimator progressAnimator=new ObjectAnimator().ofFloat(chart,"onlineNum",0,mOnlineNum);
+        ObjectAnimator progressAnimator=new ObjectAnimator().ofFloat(chart,"onlineNum",oldNum,mOnlineNum);
         progressAnimator.setDuration(1000);
         progressAnimator.setInterpolator(new OvershootInterpolator());
 
@@ -83,6 +84,7 @@ public class NumberChart extends LinearLayout {
     }
 
     public void setmOnlineNum(float mOnlineNum) {
+        oldNum=this.mOnlineNum;
         this.mOnlineNum = mOnlineNum;
         chart.setOnlineNum(this.mOnlineNum);
         setChartValue();
