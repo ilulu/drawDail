@@ -193,7 +193,8 @@ public class Chart extends Drawable {
         float labelY= mBottom - mStrokeWidth;
         //此处计算出文本的高度
         Paint.FontMetrics fontMetrics=paintText.getFontMetrics();
-        float fontHeight=fontMetrics.descent - fontMetrics.ascent;
+
+        float fontHeight=fontMetrics.bottom-fontMetrics.top;
         canvas.drawText(online_label, labelX, labelY, paintText);
 
         Paint paint1=new Paint();
@@ -205,13 +206,13 @@ public class Chart extends Drawable {
         DecimalFormat decimalFormat=new DecimalFormat("#");
         String numString=decimalFormat.format(mOnlineNum);
         float fontWidth=paint1.measureText(numString);
-        while(fontWidth>mWidth/2){
+        while(fontWidth>labelFontWidth){
             paint1.setTextSize(--fontSize);
             fontWidth=paint1.measureText(numString);
         }
         float numX=x-fontWidth/2;
         float numY= mBottom -fontHeight;
-        canvas.drawText(numString,numX,numY-50,paint1);
+        canvas.drawText(numString,numX,numY-mMargin,paint1);
     }
 
     /**

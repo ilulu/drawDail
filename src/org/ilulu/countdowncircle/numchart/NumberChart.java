@@ -6,7 +6,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.view.animation.OvershootInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import org.ilulu.countdowncircle.Chart;
@@ -69,7 +69,7 @@ public class NumberChart extends LinearLayout {
     private void setChartValue(){
         ObjectAnimator progressAnimator=new ObjectAnimator().ofFloat(chart,"onlineNum",oldNum,mOnlineNum);
         progressAnimator.setDuration(1000);
-        progressAnimator.setInterpolator(new OvershootInterpolator());
+        progressAnimator.setInterpolator(new LinearInterpolator());
 
         AnimatorSet animatorSet=new AnimatorSet();
         animatorSet.playTogether(progressAnimator);
