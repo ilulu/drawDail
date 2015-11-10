@@ -34,19 +34,18 @@ public abstract class AutoLayoutLinearLayout extends LinearLayout {
 
     public AutoLayoutLinearLayout(Context context) {
         super(context);
-        setAutoLayoutViews();
         init();
     }
 
     public AutoLayoutLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setAutoLayoutViews();
         init();
     }
 
-    public abstract void setAutoLayoutViews();
+    public abstract List<View> getAutoLayoutViews();
 
     private void init(){
+        mAutoLayoutViews=getAutoLayoutViews();
         int layoutSize=mAutoLayoutViews.size();
         LayoutParams layoutParams=new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT,1/(float)layoutSize);
         for(View childView:mAutoLayoutViews){
