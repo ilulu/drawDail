@@ -1,5 +1,5 @@
-#countdownCircle
-##2015年11月03日
+# countdownCircle
+## 2015年11月03日
 添加指针和图形的颜色支持
 
 修改了一个由于数字过大导致超出范围的BUG
